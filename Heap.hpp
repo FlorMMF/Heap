@@ -14,6 +14,10 @@ public:
 private:
     T *arreglo;
     int ultimo,cap;
+
+    int EmpujarArriba(int i);
+    int EmpujarAbajo(int i);
+    void redimensionar();
 };
 
 #include "Heap.tpp"

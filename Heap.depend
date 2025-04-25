@@ -1,10 +1,12 @@
 # depslib dependency file v1.0
-1745340090 source:c:\users\surface\documents\estructura de datos\heap\main.cpp
+1745540022 source:c:\users\surface\documents\estructura de datos\heap\main.cpp
 	<iostream>
 	"Heap.hpp"
 
-1745340090 c:\users\surface\documents\estructura de datos\heap\heap.hpp
+1745541051 c:\users\surface\documents\estructura de datos\heap\heap.hpp
 	"Heap.tpp"
 
-1745340259 c:\users\surface\documents\estructura de datos\heap\heap.tpp
+1745541051 c:\users\surface\documents\estructura de datos\heap\heap.tpp
+	<cmath>
+	<math.h>
 
