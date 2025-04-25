@@ -13,6 +13,16 @@ Heap<T>::Heap(const Heap<T> & h){
 }
 
 template <typename T>
+Heap<T> & Heap<T>::operator= (const Heap<T> & h){
+    T *aux = arreglo;
+    arreglo = new T[h.cap];
+    for(int i = 0; i <= h.ultimo; ++i){
+        arreglo[i] = h[i];
+    }
+    delete aux;
+}
+
+template <typename T>
 Heap<T>::~Heap(){
     delete arreglo;
 }
@@ -60,7 +70,7 @@ int Heap<T>::EmpujarArriba(int i){
 
 template <typename T>
 int Heap<T>:: EmpujarAbajo(int i, bool hijo){
-    if(hijo == IZQ){
+    if(IZQ){
         int valor = arreglo[i];
         arreglo[i] = arreglo[2*i + 1];
         arreglo[2*i + 1] = valor;
