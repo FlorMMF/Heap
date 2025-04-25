@@ -1,6 +1,8 @@
 #ifndef HEAP_HPP_INCLUDED
 #define HEAP_HPP_INCLUDED
 
+#define IZQ false
+#define DER true
 template <typename T>
 class Heap{
 public:
@@ -16,7 +18,7 @@ private:
     int ultimo,cap;
 
     int EmpujarArriba(int i);
-    int EmpujarAbajo(int i);
+    int EmpujarAbajo(int i, bool hijo);
     void redimensionar();
 };
 

@@ -8,6 +8,11 @@ Heap<T>::Heap():ultimo(-1), cap(31){
 }
 
 template <typename T>
+Heap<T>::Heap(const Heap<T> & h){
+    *this = h;
+}
+
+template <typename T>
 Heap<T>::~Heap(){
     delete arreglo;
 }
@@ -54,8 +59,8 @@ int Heap<T>::EmpujarArriba(int i){
 }
 
 template <typename T>
-int Heap<T>:: EmpujarAbajo(int i){
-    if(/*es hijo izquierdo*/){
+int Heap<T>:: EmpujarAbajo(int i, bool hijo){
+    if(hijo == IZQ){
         int valor = arreglo[i];
         arreglo[i] = arreglo[2*i + 1];
         arreglo[2*i + 1] = valor;
@@ -74,9 +79,12 @@ int Heap<T>:: EmpujarAbajo(int i){
 template <typename T>
 void Heap<T>:: redimensionar(){
     cap = cap*2;
-    T aux[] = arreglo;
+    T *aux = arreglo;
     arreglo = new T[cap];
-    arreglo = aux;
+    for(int i = 0; i <= ultimo; ++i){
+        arreglo[i] = aux[i];
+    }
+    delete aux;
 
 }
 
