@@ -3,14 +3,25 @@
 
 #define IZQ true
 #define DER false
+
+template <typename T>
+bool minimo(const T &a, const T &b);
+
+template <typename T>
+bool maximo(const T &a, const T &b);
+
 template <typename T>
 class Heap{
 public:
     /** \brief Constructor de la clase
+     * 
+     * \param comparador bool (*)(const T &, const T &), puntero a función que establece el orden del montículo. Por defecto usa la función "minimo",
+     * que organiza los datos en orden ascendente (montículo mínimo).
      *
-     *
+     * \return Heap, objeto inicializado con capacidad inicial de 31 elementos.
+     * 
      */
-    Heap();
+    Heap(bool (*comparador)(const T &, const T &) = minimo);
     /** \brief Destructor de la clase
      *
      *
@@ -42,10 +53,47 @@ public:
      *
      */
     void Imprimir();
+    /** \brief Elimina el nodo raíz del Heap (mínimo en un Min-Heap o máximo en un Max-Heap)
+     *
+     * \return T, el valor eliminado de la raíz del Heap
+     *
+     */
+    T EliminarRaiz();
+    
+    /** \brief Obtiene el elemento en la raíz del montón sin eliminarlo
+     *
+     * \return T, el elemento al frente
+     */
+    T ObtFrente() const;
+
+    /** \brief Indica si el montón está vacío
+     *
+     * \return bool, verdadero si está vacío, falso en caso contrario
+     */
+    bool EstaVacio() const;
+
+    /** \brief Vacía el montón eliminando todos los elementos
+     *
+     * \return void
+     */
+    void Vaciar();
+
+    /** \brief Devuelve el número de elementos en el montón
+     *
+     * \return int, cantidad de elementos actuales
+     */
+    int NumElementos() const;
+
+    /** \brief Devuelve la capacidad actual del montón
+     *
+     * \return int, capacidad del arreglo
+     */
+int Capacidad() const;
+
 private:
     T *arreglo;
     int ultimo,cap;
-
+    bool (*comp)(const T &, const T &);
     /** \brief M&eacute;todo para intercambiar dos valores en el &aacute;rbol,
                 intercambia un hijo con su padre
      *
@@ -71,6 +119,15 @@ private:
     void redimensionar();
 };
 
+template <typename T>
+bool minimo(const T &a, const T &b){
+    return a <= b;
+}
+
+template <typename T>
+bool maximo(const T &a, const T &b){
+    return a >= b;
+}
 #include "Heap.tpp"
 
 #endif // HEAP_HPP_INCLUDED
